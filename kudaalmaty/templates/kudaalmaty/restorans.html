@@ -1,0 +1,33 @@
+{% extends 'kudaalmaty/base.html' %}
+{% block content %}
+
+	<div class="container">
+		<div class="row">
+		<div class="col-lg-12 mb-12 mb-md-0">
+		<h2 class="text-center title"> Рестораны</h2>
+			
+		</div>
+		
+		<div class="col-lg-12">
+			<div class="row">
+     {% for restoran in restorans %}
+				  <div class="col-md-4 col-sm-6">
+          
+                
+            		<div class="places">
+             			<img class="pl_images" src="/static/images/{{restoran.first_photo}}" alt="">
+             			<h2 class="names"><a href="{% url 'detail' pk=restoran.pk %}" id="detail" >{{restoran.title}} </a></h2>
+             			<p class="address"><img src="/static/images/location.png" class="location">{{restoran.addr}}</p>
+					      </div>
+                  
+          </div>
+          
+          {% endfor %}
+
+				
+			</div>
+		</div>
+			</div>
+
+{% endblock %}
+

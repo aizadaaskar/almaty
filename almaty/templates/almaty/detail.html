@@ -1,0 +1,152 @@
+{% extends 'almaty/base.html' %}
+
+{% block content %}
+<style>
+	#comment {
+  margin-top: 5px;
+
+  width: 180px;
+  height: 24px;
+  color: #f9f8fe;
+  background-color: #7C9CB1;
+  border: solid #7C9CB1;
+  border-radius: 5px;
+  font-family: 'Alegreya Sans', sans-serif;
+  font-size: 15px; }
+
+  .actionBox .form-comment * {
+    width:300px;
+}
+</style>
+
+<div class="container">
+		<div class="row">
+		<div class="col-lg-12 mb-12 mb-md-0">
+		<h2 class="text-center title"> {{place.title}}</h2><br>
+			
+		</div>
+		</div>
+</div>
+	<div class="container">
+		<div class="row">
+			
+			<div class="col-lg-12">
+				<div id="carousel" class="carousel slide">
+		     	<ol class="carousel-indicators">
+		     		<li class="active" data-target="#carousel" data-slide-to="0"></li>
+		     		<li data-target="#carousel" data-slide-to="1"></li>
+		     		<li data-target="#carousel" data-slide-to="2"></li>
+		     	</ol>
+
+		     	<div class="carousel-inner">
+		     		<div class="item active second-slide">
+		     			<img src="/static/images/{{place.first_photo}}" alt="photo" style="width:100%; height:100%">
+		     			<div class="carousel-caption">
+		     				
+		     			</div>
+		     		</div>
+		     		<div class="item second-slide">
+		     			<img src="/static/images/{{place.second_photo}}" alt="photo" style="width:100%; height:100%">
+		     			<div class="carousel-caption">
+		     				
+		     			</div>
+		     		</div>
+		     		<div class="item second-slide">
+		     			<img src="" alt="photo" style="width:100%; height:105%">
+		     			<div class="carousel-caption">
+		     				
+		     			</div>
+		     		</div>
+		     	</div>
+		     	<a href ="#carousel" class="left carousel-control" data-slide="prev">
+		     	<span class="glyphicon glyphicon-chevron-left"></span></a>
+		     	<a href ="#carousel" class="right carousel-control" data-slide="next">
+		     	<span class="glyphicon glyphicon-chevron-right"></span></a>
+		     </div>
+			</div>
+			
+		</div>
+	</div>
+	<div class="container">
+		<div class="row">
+              
+			<div class="col-lg-6">
+				<blockquote class="blockquote description">
+  						<br>
+  						<p class="mb-0 text">{{place.text}}</p>
+				</blockquote>
+			</div>
+			<div class="col-lg-6 points">
+				<dl class="row points-location">
+				  <dt class="col-sm-5 main"><img src="/static/images/placeholder.png">  Адрес:</dt>
+				  <dd class="col-sm-7 sub">{{place.addr}}</dd>
+				  <dt class="col-sm-5 main"><img src="/static/images/bill.png">  Средний счёт:</dt>
+				  <dd class="col-sm-7 sub">{{place.cash}}</dd>
+				  <dt class="col-sm-5 main"><img src="/static/images/tick.png">  Чем насладиться:</dt>
+				  <dd class="col-sm-7 sub">{{place.specialty}}</dd>
+				  <dt class="col-sm-5 main"><img src="/static/images/clock.png">  Режим работы:</dt>
+				  <dd class="col-sm-7 sub">{{place.schedule}}</dd>
+				</dl>
+
+			</div>
+			
+		</div>		
+	</div>
+
+<div class="container">
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="detailBox col-lg-12">
+    <div class="titleBox col-lg-12">
+      <label>Отзывы</label>
+    </div>
+    
+    <div class="actionBox col-lg-12">
+    <div class="col-lg-12">
+        <ul class="commentList">
+        {% for comment in comments %}
+            <li>
+                <div class="col-lg-3">
+                 <h5><img src="/static/images/profile.png">{{comment.auth}}</h5> 
+                </div>
+                <div class="col-lg-12">
+                    <p class="" style="margin-left: 20px;">{{comment.comm_text}}</p> 
+                </div>
+            </li>
+               {% endfor %}
+             </ul>
+             
+            	
+            </div>
+              <div class = "col-lg-12">
+            <div class="row">
+            <form action="{% url 'addcomment' pk=place.pk %}" method="post">
+             {% csrf_token %}
+              <div class="col-lg-3 ">
+                <input class="form-control" type="text" placeholder="Your comments" name="comm_text" >
+            </div>
+            <div class="col-lg-7 form-group ">
+            {% if user.is_authenticated %}
+                <input type="submit" value ="Добавить комментарий"  id="comment">
+                {% else %}
+                <button type="button" id="comment" ><a href="{% url 'login' %}" style="color: white; text-decoration: none;">Войдите на сайт</a></button>
+                       {% endif %}
+
+            </div>
+             
+            </form>
+           </div>
+            </div>
+            
+     
+           
+       
+       
+    </div>
+</div>
+		</div>
+			
+	</div>
+</div>
+{% endblock %}
+	

@@ -1,0 +1,85 @@
+{% extends 'kudaalmaty/base.html' %}
+
+{% block content %}
+<div class="container">
+		<div class="row">
+		<div class="col-lg-12 mb-12 mb-md-0">
+		<h2 class="text-center title"> Контакты</h2>
+		</div>
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-10 col-lg-offset-1 contacts">
+				<blockquote class="blockquote"><h3 class="name_second">Куда Алматы</h3> <footer class="blockquote-footer text_second" style="font-size: 15px;"> посвящен освещению самых интересных и знаковых мест Алматы.<br>Наша миссия — чтобы люди не скучали и открывали для себя что-то новое!<br>
+				Мы собрали все самое интересное, чтобы вам было куда пойти с друзьями, с семьей и детьми!</footer></blockquote>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-10 col-lg-offset-1 col-md-12 col-sm-12 contacts">
+				<div class="row">
+					<div class="col-lg-7 col-md-6 col-sm-6">
+						<dl>
+						<dt class="col-sm-12 option ">По вопросам пишите на почту:</dt>
+  						<dd class="col-sm-12 option">kuda_almaty@gmail.com</dd>		
+  						<dt class="col-sm-12 option">Часы работы:</dt>
+  						<dd class="col-sm-12 option">По будням, с 10:00 до 19:00</dd>		
+					 	</dl>
+					</div>
+					<div class="col-lg-5 col-md-6 col-sm-6">
+						<dl>
+						<dt class="col-sm-12 option">Номер телефона:</dt>
+  						<dd class="col-sm-12 option">87018839498</dd>		
+  						<dt class="col-sm-12 option">Адрес:</dt>
+  						<dd class="col-sm-12 option">г.Каскелен, мкр.Алтын аул, дом 1</dd>	
+					 	</dl>
+					</div>
+				</div>					
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<div class="row">
+		<div class="col-lg-10 col-lg-offset-1 col-md-12 col-sm-12">
+			<div class="row">
+				<div class="col-lg-6 col-md-6 col-sm-6 contacts">
+				<form action ="mail.php " method = "POST">
+					<div class="form-group row">
+  						<label for="example-text-input" class="col-lg-7 col-xs-7 col-form-label mail">Имя</label>
+                        <label for="example-email-input" class="col-lg-5 col-xs-5 col-form-label mail">Эл.почта</label>
+
+						<div class="col-lg-7 col-xs-7">
+    					<input class="form-control" type="text" value=" " id="example-text-input" name="user_name">
+  						</div>
+  						
+  						<div class="col-lg-5 col-xs-5">
+  						<input class="form-control" type="email" value=" " id="example-email-input" name="email">
+  						</div>
+  						<label for="exampleSelect1" class="col-lg-12 col-xs-12 col-form-label mail">Тема обращения</label>
+  						<div class="col-lg-12 col-xs-12">
+	     					<select class="form-control " id="exampleSelect1" name="titlr">
+	      						<option>--</option>
+	   						    <option>Предложение сотрудничества</option>
+	     						<option>Идея развития</option>
+	      						<option>Техническая проблема</option>
+	      						<option>Другое</option>
+	   						</select>
+	   					</div>
+	   					<label for="example-text-input" class="col-lg-12 col-xs-12 col-form-label mail">Текст письма</label>
+	   					<div class="col-lg-12 col-xs-12">
+    					<input class="form-control" type="text" value=" " id="example-text-input" style="height: 100px;" name="text">
+  						</div>
+  						<button class="col-md-3 col-md-offset-9 col-sm-4 col-sm-offset-8 col-xs-4 col-xs-offset-8 send" type ="submit">Отправить</button> 
+					</div>
+					</form>
+				</div>
+				<div class="col-lg-6 col-md-6 col-sm-6">
+					<div id="map" style="height:300px;">
+					
+				</div>
+				</div>
+			</div>
+		</div>
+		</div>
+	</div>
+
+{% endblock %}
